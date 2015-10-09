@@ -27,7 +27,7 @@ class MyFitness():
         """
         This method returns data on the user's profile
         """
-        print "Fetching user's profile ... ";
+        print "Fetching user's profile ... ",
         profile = self.misfit.profile().data
         print "Done!"
         return profile
