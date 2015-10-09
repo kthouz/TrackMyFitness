@@ -1,4 +1,3 @@
-#This script plays with misftit
 from misfit import Misfit
 from misfit.auth import MisfitAuth
 from pprint import pprint
