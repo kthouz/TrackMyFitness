@@ -53,6 +53,12 @@ class MyFitness():
         print len(goals), " goals found :-)"
 
         return pd.DataFrame(goals_dict)
+
+    def getActivity(self):
+        pass
+
+    def analyzePerformance(self):
+        pass
             
 
 if __name__ == '__main__':
