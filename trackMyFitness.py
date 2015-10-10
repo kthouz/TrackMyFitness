@@ -53,9 +53,35 @@ class MyFitness():
 
         return pd.DataFrame(goals_dict)
 
-    def getActivity(self):
-        pass
+    def deviceInfo(self):
+        """Use this method to get information on the user's device"""
+        deviceInfo = self.misfit.device().data
+        return deviceInfo
 
+    def activityDetails(self,start_date = '2015-10-1', end_date = time.strftime("%Y-%m-%d")):
+        """
+        Use this method to get information on the user's sessions
+        """
+        sessions = self.misfit.session(start_date, end_date)
+        sessionDetails = {'activityType':[], 'distance':[],'steps':[], 'startTime':[],
+                          'duration':[], 'calories':[],'points':[]}
+        for i in range(0,len(sessions)):
+            sdata = sessions[i].data
+            sessionDetails['activityType'].append(sdata['activityType'])
+            sessionDetails['distance'].append(sdata['distance'])
+            sessionDetails['steps'].append(sdata['steps'])
+            sessionDetails['startTime'].append(sdata['startTime'])
+            sessionDetails['duration'].append(sdata['duration'])
+            sessionDetails['calories'].append(sdata['calories'])
+            sessionDetails['points'].append(sdata['points'])
+        return pd.DataFrame(sessionDetails)
+
+    def getSummary(self, start_date = '2015-10-01', end_date = time.strftime("%Y-%m-%d")):
+        """Use this method to get summary of the user's activity"""
+        summary = self.misfit.summary(start_date, end_date)
+        return summary
+
+    
     def analyzePerformance(self):
         pass
             
